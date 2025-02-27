@@ -13,6 +13,30 @@ Conway's Game of Life is a cellular automaton where cells on a grid live, die, o
 - **Customization**: Users can define parameters such as grid size, population density, and evaluation criteria.
 - **Output**: Generates detailed reports of discovered seeds, including their lifespan and evolutionary characteristics.
 
+### Additional Features:
+1. **Multithreaded Search Algorithm**:  
+   - The program utilizes multiple threads to speed up the search for viable seed patterns in Conway's Game of Life.  
+   - Each thread independently tests different initial configurations to find long-living patterns.  
+   - Uses `std::async` and `std::atomic` to handle concurrency efficiently.
+
+2. **Pattern Evaluation and Storage**:  
+   - The algorithm evaluates each generated pattern based on how long it survives in the simulation.  
+   - If a pattern lasts for at least `rounds - good_combination_threshold` generations, it is considered "good" and saved.  
+   - Found patterns are stored in the `good_combinations/` directory, with each seed written to a unique file.
+
+3. **Dynamic Grid and Customization**:  
+   - Users can specify the grid size (`rows x cols`), the minimum lifespan required for a pattern, and the number of threads to use.  
+   - The program adapts to different field sizes and seed densities.
+
+4. **Game of Life Simulation with State Tracking**:  
+   - The `Matrix` class manages the grid and tracks cell states over generations.  
+   - Uses a **torus topology** (wrap-around edges) to simulate an infinite grid.  
+   - Stores previous states to detect repeating cycles and stop early if necessary.
+
+5. **Efficient Cell Processing**:  
+   - Implements optimized neighbor counting and state updates for performance.  
+   - Tracks changes in cell states to avoid unnecessary calculations.
+
 ## Installation
 
 1. **Clone the Repository**:
@@ -46,7 +70,7 @@ After building the project, run the executable with the desired parameters:
 ```bash
 Binaries/test_combinations
 ```
-You will be asked for providing desired threads count to be used by algorithm, game field size, and minimum generations count the field should live for. A possible input: 12 threads, 25 * 80 field size, and 3000 generations.
+You will be asked for providing desired threads count to be used by algorithm, game field size, and minimum generations count the field should live for. A possible input: 12 threads, 25 * 80 field size, and 3000 generations. **Field is considered as alive while it's life cycle accounts for more than 120 unique states**
 
 
 ## Contributing
