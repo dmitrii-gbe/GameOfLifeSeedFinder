@@ -72,6 +72,8 @@ Binaries/test_combinations
 ```
 You will be asked for providing desired threads count to be used by algorithm, game field size, and minimum generations count the field should live for. A possible input: 12 threads, 25 * 80 field size, and 3000 generations. **Field is considered as alive while it's life cycle accounts for more than 120 unique states**
 
+You will be asked to provide the desired number of threads for the algorithm, the game field size, and the minimum number of generations the field should survive. A possible input could be: 12 threads, a 25 × 80 field size, and 3000 generations. **The field is considered alive as long as its life cycle includes more than 120 unique states (can be customized via #define directive in matrix.cpp)**.
+
 
 ## Contributing
 
