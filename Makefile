@@ -1,6 +1,6 @@
 compiler := clang++
 root_source_dir := ./src
-compiler_flags := -ltbb -lpthread -Werror -Wextra -Wall -pedantic -std=gnu++2b
+compiler_flags := -lpthread -Werror -Wextra -Wall -pedantic -std=gnu++2b
 game_of_life_src := $(root_source_dir)/game_of_life.cpp $(root_source_dir)/matrix.cpp
 test_combinations_src := $(root_source_dir)/test_combinations.cpp $(root_source_dir)/matrix.cpp $(root_source_dir)/combinatorics.cpp
 binaries_directory := ./Binaries
